@@ -20,16 +20,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org/'
+          registry-url: 'https://npm.pkg.github.com'
 
       - name: Set up Git user
         run: |
           git config --global user.email "ToruShimizu@users.noreply.github.com"
           git config --global user.name "ToruShimizu"
 
-      - name: Configure npm for NPM registry
+      - name: Configure npm for GitHub Packages
         run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
 
       - name: Install dependencies
         run: npm install
@@ -37,8 +37,7 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Publish to npm
-        run: |
-          npm publish --access public
+      - name: Publish to GitHub Packages
+        run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
