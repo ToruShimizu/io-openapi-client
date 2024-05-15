@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ToruShimizu/io-openapi-client/issues"
   },
+  "publishConfig": {
+    "@ToruShimizu:registry": "https://npm.pkg.github.com"
+  },
   "homepage": "https://github.com/ToruShimizu/io-openapi-client#readme"
 }
