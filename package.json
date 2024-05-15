@@ -1,5 +1,5 @@
 {
-  "name": "@re/io-openapi-client",
+  "name": "@toru908/io-openapi-client",
   "version": "1.0.0",
   "description": "A TypeScript client for interacting with IO OpenAPI services",
   "main": "dist/index.js",
