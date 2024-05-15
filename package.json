@@ -15,7 +15,6 @@
   ],
   "author": "ToruShimizu ToruShimizu@users.noreply.github.com",
   "license": "MIT",
-  "dependencies": {},
   "devDependencies": {
     "typescript": "^5.4.5",
     "ts-node": "^10.9.2",
@@ -25,7 +24,14 @@
     "dist"
   ],
   "publishConfig": {
-    "access": "public",
     "registry": "https://npm.pkg.github.com"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToruShimizu/io-openapi-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ToruShimizu/io-openapi-client/issues"
+  },
+  "homepage": "https://github.com/ToruShimizu/io-openapi-client#readme"
 }
