@@ -1,5 +1,3 @@
-### 4. GitHub Actions Workflow
-
 name: Publish scoped npm package
 
 on:
