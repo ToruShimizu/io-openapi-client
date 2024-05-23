@@ -1,0 +1,33 @@
+name: Publish packages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    name: Build and Publish package
+    runs-on: ubuntu-latest
+    steps:
+      # openapi-clientリポジトリ をチェックアウト
+      - name: checkout
+        uses: actions/checkout@v4
+
+      # nodeセットアップ
+      - name: setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          registry-url: https://npm.pkg.github.com
+
+      # npm install と TypeScriptトランスパイルをした後、パッケージとして公開
+      - name: build & publish package (io-openapi-client)
+        id: publish_package_io_openapi_client
+        run: |
+          npm ci
+          npx tsc
+          npm publish ./
+          echo ::set-output name=version::$(npm version --json | jq '."@torushimizu/io-openapi-client"')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
