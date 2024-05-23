@@ -1,3 +1,3 @@
 /* tslint:disable */
 /* eslint-disable */
-export * from './GetUsers200ResponseInner';
+export * from './User';
