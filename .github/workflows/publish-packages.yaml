@@ -28,6 +28,6 @@ jobs:
           npm ci
           npx tsc
           npm publish ./
-          echo ::set-output name=version::$(npm version --json | jq '."@torushimizu/io-openapi-client"')
+          echo "version=$(npm version --json | jq '."@torushimizu/io-openapi-client"')" >> $GITHUB_OUTPUT
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
