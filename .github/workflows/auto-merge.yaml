@@ -12,7 +12,8 @@ jobs:
   release:
     name: Auto Merge
     runs-on: ubuntu-latest
-    # `[automerge]` というprefixがある場合にだけこの workflow が発動する
+    # `[automerge]` というprefixがある場合にだけこの workflow が発動する。
+    # backendリポジトリのworkflowで作られたPRには `[automerge]` というprefixが付与される
     if: ${{ startsWith(github.event.pull_request.title, '[automerge]') }}
     steps:
       # GitHub Apps により該当PRの GitHub AutoMerge を ON にする
@@ -28,8 +29,8 @@ jobs:
           token: ${{ steps.generate_token.outputs.token }}
           pull-request-number: ${{ github.event.number }}
 
-      # AutoMerge 条件（つまり branch protection）は「1人以上のApproveが必要」であるため、
-      # Approve する → これにより GitHub Auto Merge が発動
+      # branch protectionは「1人以上のApproveが必要」であるため、
+      # ApproveしてGitHub Auto Merge を発動させる
       - name: Approve
         uses: hmarr/auto-approve-action@v4
         with:
